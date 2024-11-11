@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Age Calculator</title> 
+    
+    <style>
+     
+
+body {
+  min-height: 100%;
+  margin: 0;
+  color: #000;
+  font-size: 13px;
+  font-family: Arial,Helvetica,sans-serif;
+  text-align: center;
+  background-color: #000000;
+background-image: linear-gradient(150deg, #000000 0%, #04619f 74%);
+}
+
+.header,.strong {
+  font-weight: 700;
+}
+
+.header {
+  width: 100%;
+  height: 40px;
+  max-height: 70px;
+  overflow: hidden;
+  color: dodgerblue;
+  font-size: 25px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #222222;
+  border-bottom: solid 3px dodgerblue;
+  letter-spacing: 6px;
+  
+}
+
+.card {
+  margin: 6px;
+  padding: 5px 10px;
+  background-color: #222222;
+  -webkit-border-radius: 3px;
+  background-color: #222222;
+background-color: #000000;
+background-image: linear-gradient(360deg, #000000 0%, #04619f 74%);
+  border-radius: 3px;
+}
+
+textarea {
+  width: 96%;
+  height: 30%;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+  font-size:15px;
+  margin-top: 5px;
+  font-weight:bold;
+  margin-left: -0px;
+  padding-left:10px;
+  padding-top:10px;
+  font-weight:900;
+  outline-color: blue;
+}
+
+.text {
+  width: 100%;
+  height: 30px;
+  padding-top: 12px;
+  border-radius: 3px;
+  background-color: #333333;
+  color: dodgerblue;
+  border: 2px solid #333;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 0px;
+}
+
+.text2 {
+  width: 100%;
+  height: 30px;
+  padding-top: 12px;
+  border: 2px solid #333;
+  border-radius: 3px;
+  background-color: #333333;
+  color: dodgerblue;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.input-select {
+  width: 98%;
+  height: 30px;
+  text-align: center;
+  margin-top: 5px;
+  border-radius: 3px;
+  outline-color: blue;
+  border: 1px solid #000;
+  background-color: #ddd;
+}
+
+.input-select2 {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  margin-top: 5px;
+  outline-color: blue;
+  border-radius: 5px;
+}
+
+.btn {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-weight: bolder;
+  font-size: 25px;
+  border: 1.5px solid #333;
+  background-color: dodgerblue;
+  color: #333333;
+}
+
+.btn:hover {
+    background-color: #222222;
+    color: dodgerblue;
+    font-size:26px;
+    text-shadow:1px 2px 12px dodgerblue;
+    transition-duration:2s;
+    letter-spacing:3px;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  margin-top: 25px;
+}
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <main v-cloak> 
+
+    <div class="header">حاسبة العمر</div> 
+
+    <div class="card"> 
+
+    <form name="agecalc">
+
+    <div align="center">
+    
+    <div class="text" ><b>أدخل السنة:</b></div>
+
+    <input class="input-select" type="text" name="year" size="6" maxlength="4" value="2003">
+    <br>
+
+
+    <b><div class="text2" >اختر الشهر:</div></b>
+
+
+    <select class="input-select2" name="month" size="1">
+
+    <option>01 - January
+</option><option>02 - February
+</option><option>03 - March
+</option><option>04 - April
+</option><option>05 - May
+</option><option>06 - June
+</option><option selected="">07 - July
+</option><option>08 - August
+</option><option>09 - September
+</option><option>10 - October
+</option><option>11 - November
+</option><option>12 - December
+</option></select>
+
+
+
+<b><div class="text2" >حدد اليوم: </div></b>
+<select class="input-select2" name="day" size="1">
+
+
+<option>01
+</option><option>02
+</option><option>03
+</option><option>04
+</option><option>05
+</option><option>06
+</option><option>07
+</option><option>08
+</option><option>09
+</option><option>10
+</option><option>11
+</option><option>12
+</option><option>13
+</option><option>14
+</option><option selected="">15
+</option><option>16
+</option><option>17
+</option><option>18
+</option><option>19
+</option><option>20
+</option><option>21
+</option><option>22
+</option><option>23
+</option><option>24
+</option><option>25
+</option><option>26
+</option><option>27
+</option><option>28
+</option><option>29
+</option><option>30
+</option><option>31
+</option></select>
+
+
+<input type="button" name="start" value="احسب" onclick="run();" class="btn">
+
+
+<textarea rows="12" cols="60" name="timealive" disabled>
+ما عليك سوى إدخال سنة الميلاد المكونة من 4 أرقام ، ثم تحديد شهر وتاريخ الميلاد في المربع المنسدل ، ثم الضغط على الزر "حساب" ، يمكن للنظام حساب عمرك بدقة وعمرك بالمليون
+</textarea></div>
+    
+</form>
+
+</div></main>
+<script>
+
+
+function run() {
+with (document.agecalc) {
+dd = parseInt(day.selectedIndex) + 1;
+mm = parseInt(month.selectedIndex) + 1;
+yy = year.value;
+if (yy.length != 4 || isNaN(yy)) {
+document.agecalc.timealive.value = "الرجاء إدخال 4 أرقام للسنة.";
+document.agecalc.year.select();
+document.agecalc.year.focus();
+return;
+   }
+}
+days = new Date();
+gdate = days.getDate();
+gmonth = days.getMonth();
+gyear = days.getYear();
+if (gyear < 2000) gyear += 1900;
+age = gyear - yy;
+if ((mm == (gmonth + 1)) && (dd <= parseInt(gdate))) {
+age = age; 
+} else {
+if (mm <= (gmonth)) {
+age = age;
+} else {
+age = age - 1; 
+   }
+}
+if (age == 0)
+age = age;
+document.agecalc.timealive.value = " عمرك الان" + age+ " سنه\n";
+if (mm <= (gmonth + 1))
+age = age - 1;
+if ((mm == (gmonth + 1)) && (dd > parseInt(gdate))) 
+age = age + 1;
+var m;
+var n;
+if (mm == 12) n = 31 - dd;
+if (mm == 11) n = 61 - dd;
+if (mm == 10) n = 92 - dd;
+if (mm == 9) n = 122 - dd;
+if (mm == 8) n = 153 - dd;
+if (mm == 7) n = 184 - dd;
+if (mm == 6) n = 214 - dd;
+if (mm == 5) n = 245 - dd;
+if (mm == 4) n = 275 - dd;
+if (mm == 3) n = 306 - dd;
+if (mm == 2) { n = 334 - dd; if (leapyear(yy)) n++; }
+if (mm == 1) { n = 365 - dd; if (leapyear(yy)) n++; }
+if (gmonth == 1) m = 31;
+if (gmonth == 2) {
+m = 59;
+if (leapyear(gyear)) m++;
+}
+if (gmonth == 3)  { m = 90;  if (leapyear(gyear)) m++; }
+if (gmonth == 4)  { m = 120; if (leapyear(gyear)) m++; }
+if (gmonth == 5)  { m = 151; if (leapyear(gyear)) m++; }
+if (gmonth == 6)  { m = 181; if (leapyear(gyear)) m++; }
+if (gmonth == 7)  { m = 212; if (leapyear(gyear)) m++; }
+if (gmonth == 8)  { m = 243; if (leapyear(gyear)) m++; }
+if (gmonth == 9)  { m = 273; if (leapyear(gyear)) m++; }
+if (gmonth == 10) { m = 304; if (leapyear(gyear)) m++; }
+if (gmonth == 11) { m = 334; if (leapyear(gyear)) m++; }
+if (gmonth == 12) { m = 365; if (leapyear(gyear)) m++; }
+months = age * 12;
+months += 12 - parseInt(mm);
+months += gmonth;
+totdays = (parseInt(age) * 365);
+totdays += age / 4;
+totdays = parseInt(totdays) + gdate + m + n;
+if (gmonth == 1) p = 31 + gdate;
+if (gmonth == 2) {
+p = 59 + gdate;
+if (leapyear(gyear)) m = m+1;
+}
+if (gmonth == 3)  { p = 90 + gdate;  if (leapyear(gyear)) p++; }
+if (gmonth == 4)  { p = 120 + gdate; if (leapyear(gyear)) p++; }
+if (gmonth == 5)  { p = 151 + gdate; if (leapyear(gyear)) p++; }
+if (gmonth == 6)  { p = 181 + gdate; if (leapyear(gyear)) p++; }
+if (gmonth == 7)  { p = 212 + gdate; if (leapyear(gyear)) p++; }
+if (gmonth == 8)  { p = 243 + gdate; if (leapyear(gyear)) p++; }
+if (gmonth == 9)  { p = 273 + gdate; if (leapyear(gyear)) p++; }
+if (gmonth == 10) { p = 304 + gdate; if (leapyear(gyear)) p++; }
+if (gmonth == 11) { p = 334 + gdate; if (leapyear(gyear)) p++; }
+if (gmonth == 12) { p = 365 + gdate; if (leapyear(gyear)) p++; }
+weeks = (age * 365) + n + p;
+weeks = weeks / 7;
+etcdays = parseFloat(weeks) - parseInt(weeks);
+etcdays = Math.round(etcdays * 7);
+weeks = parseInt(weeks);
+etcdays += parseInt(age / 4);
+if (etcdays > 7)
+weeks += parseInt(etcdays / 7);
+document.agecalc.timealive.value += "\n اسابيع : " + weeks + "";
+document.agecalc.timealive.value += " | شهور : " + months + "\n";
+document.agecalc.timealive.value += "أيام : " + totdays + "";
+var time = new Date();
+ghour = time.getHours();
+gmin = time.getMinutes();
+gsec = time.getSeconds(); 
+hour = ((age * 365) + n + p) * 24;
+hour += (parseInt(age / 4) * 24);
+document.agecalc.timealive.value += " | ساعات : " + hour + "\n";
+var min = (hour * 60) + gmin; 
+
+
+document.agecalc.timealive.value += "الدقائق : " + min + "";
+sec = (min * 60) + gsec;
+document.agecalc.timealive.value += " | ثواني : " + sec + "\n\n";
+mm = mm - 1;
+var r;
+if (mm == 0) r = 0;
+if (mm == 1) r = 31;
+if (mm == 2) { r = 59; if (leapyear(gyear)) m++; }
+if (mm == 3)  { r = 90;  if (leapyear(gyear)) r++; }
+if (mm == 4)  { r = 120; if (leapyear(gyear)) r++; }
+if (mm == 5)  { r = 151; if (leapyear(gyear)) r++; }
+if (mm == 6)  { r = 181; if (leapyear(gyear)) r++; }
+if (mm == 7)  { r = 212; if (leapyear(gyear)) r++; }
+if (mm == 8)  { r = 243; if (leapyear(gyear)) r++; }
+if (mm == 9)  { r = 273; if (leapyear(gyear)) r++; }
+if (mm == 10) { r = 304; if (leapyear(gyear)) r++; }
+if (mm == 11) { r = 334; if (leapyear(gyear)) r++; }
+mm = mm + 1;
+r = parseInt(r) + parseInt(dd);
+
+if ((mm >= (gmonth + 1)) && (dd > gdate)) {
+bday = r - m - gdate;
+}
+else {
+if ((leapyear(gyear)) && ((mm > 2) && (dd < 29))) {
+a = 366;
+} else {
+a = 365;
+}
+bday = a + (r - m - gdate);
+}
+nhour = 24 - parseInt(ghour);
+nmin = 60 - parseInt(gmin);
+nsec = 60 - parseInt(gsec);
+while (bday > 366) bday -= 365;
+if (((bday == 366) && (leapyear(gyear)) || ((bday == 365) && (!leapyear(gyear))))) {
+document.agecalc.timealive.value += "تهانينا! اليوم هو عيد ميلادك! عيد ميلاد سعيد";
+} else {
+document.agecalc.timealive.value += "عيد ميلادك القادم لا يزال من الآن : \n"
++ bday + " أيام |" + nhour + " ساعات |" + nmin + " الدقائق |" + nsec + " ثواني ";
+setTimeout("run()", 1000);
+   }
+}
+function leapyear(a) {
+if (((a%4 == 0) && (a%100 != 0)) || (a%400 == 0))
+return true;
+else
+return false;
+}
+    
+</script>
+
+
+</body>
+</html> 
+
